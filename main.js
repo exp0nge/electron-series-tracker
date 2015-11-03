@@ -21,6 +21,7 @@ app.on('window-all-closed', function() {
 // initialization and is ready to create browser windows.
 app.on('ready', function() {
   // Create the browser window.
+  var subpy = require('child_process').spawn('python', ['./python/api.py']);
   mainWindow = new BrowserWindow({width: 800, height: 600, "node-integration": false});
   mainWindow.setTitle('Series Tracker: The Second Coming');
   // and load the index.html of the app.
@@ -31,5 +32,6 @@ app.on('ready', function() {
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
     mainWindow = null;
+    subpy.kill('SIGINT');
   });
 });

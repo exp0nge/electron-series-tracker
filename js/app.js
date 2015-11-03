@@ -1,7 +1,8 @@
-var app = angular.module('app', [])
+var angApp = angular.module('app', [])
 
-app.controller('MainCtrl', 
+angApp.controller('MainCtrl', 
 	function(){
 		var vm = this;
-		vm.currentTime = new Date();
+		//window.localStorage.setItem('test', 'Hello World');
+		vm.currentTime = window.localStorage.getItem('test');
 	})

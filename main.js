@@ -1,7 +1,6 @@
 var app = require('app');  // Module to control application life.
 var BrowserWindow = require('browser-window');  // Module to create native browser window.
 
-
 // Report crashes to our server.
 require('crash-reporter').start();
 // Keep a global reference of the window object, if you don't, the window will
@@ -21,11 +20,11 @@ app.on('window-all-closed', function() {
 // initialization and is ready to create browser windows.
 app.on('ready', function() {
   // Create the browser window.
-  var subpy = require('child_process').spawn('python', ['./python/api.py']);
   mainWindow = new BrowserWindow({width: 800, height: 600, "node-integration": false});
   mainWindow.setTitle('Series Tracker: The Second Coming');
   // and load the index.html of the app.
   mainWindow.loadUrl('file://' + __dirname + '/index.html');
+  mainWindow.openDevTools();
   // Emitted when the window is closed.
   mainWindow.on('closed', function() {
     // Dereference the window object, usually you would store windows

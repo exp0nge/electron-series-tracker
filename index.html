@@ -27,67 +27,35 @@
       </nav>
       <!-- Page Layout here -->
       <div class="container">
-      <div class="row">
-         <ul class="collection">
-          <li class="collection-item avatar">
-            <img src="images/yuna.jpg" alt="" class="circle">
-            <span class="title">Title</span>
-            <p>First Line <br>
-              Second Line
-            </p>
-            <a href="#!" class="secondary-content"><i class="material-icons">check</i></a>
-          </li>
-          <li class="collection-item avatar">
-            <i class="material-icons circle">folder</i>
-            <span class="title">Title</span>
-            <p>First Line <br>
-              Second Line
-            </p>
-            <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-          </li>
-          <li class="collection-item avatar">
-            <i class="material-icons circle green">insert_chart</i>
-            <span class="title">Title</span>
-            <p>First Line <br>
-              Second Line
-            </p>
-            <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-          </li>
-          <li class="collection-item avatar">
-            <i class="material-icons circle red">play_arrow</i>
-            <span class="title">Title</span>
-            <p>First Line <br>
-              Second Line
-            </p>
-            <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-          </li>
-        </ul>
-      </div>
-      </div>
-      <div class="col s3">
-          <div class="fixed-action-btn" style="bottom: 15px; right: 14px;">
-            <a class="btn-floating btn-large blue lighten-2">
-              <i class="large material-icons">add</i>
-            </a>
-          </div>
+        <div>
+          <form>
+            <input ng-model="main.titleInput"/>
+          </form>
+          <p>{{ main.titleInput }}</p>
+        </div>  
+        <div class="row">
+          <ul class="collection">
+            <li class="collection-item avatar" ng-repeat="series in main.seriesList">
+              <i class="material-icons circle">folder</i>
+              <span class="title">Title</span>
+              <p>First Line <br>
+                Second Line
+              </p>
+              <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+            </li>
+          </ul>
+        </div>
+        </div>
+        <div class="col s3">
+            <div class="fixed-action-btn" style="bottom: 15px; right: 14px;">
+              <a class="btn-floating btn-large blue lighten-2" ng-click="main.addSeries()">
+                <i class="large material-icons">add</i>
+              </a>
+            </div>
     </main>
     
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="js/jquery.js"></script>
-    <script type="text/javascript">
-    var mainAddr = 'http://127.0.0.1:5000';
-    $.ajax({
-        type: 'get',
-        url: mainAddr + '/',
-        success: function(message) {
-            alert(message);
-        },
-        error: function(error) {
-            alert(String(error));
-            console.log(error);
-        }
-    });
-  </script>
     <script type="text/javascript" src="js/materialize.min.js"></script>
     <script type="text/javascript" src="js/angular.min.js"></script>
     <script type="text/javascript" src="js/app.js"></script>

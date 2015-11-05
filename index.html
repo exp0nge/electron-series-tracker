@@ -28,7 +28,7 @@
       <!-- Page Layout here -->
       <div class="container">
         <div>
-          <form ng-submit="main.addSeries()">
+          <form ng-submit="main.addSeries()" ng-show="main.addSeriesPanel == true">
             <input type="text" required name="title" ng-model="main.titleInput"/>
             <input type="submit" id="submit" value="Submit" />
           </form>
@@ -36,7 +36,7 @@
         </div>  
         <div class="row">
           <ul class="collection">
-            <li class="collection-item avatar" ng-repeat="series in main.seriesList">
+            <li class="collection-item avatar" ng-repeat="series in main.seriesList track by $index">
               <i class="material-icons circle">folder</i>
               <span class="title">Title</span>
               <p>First Line <br>

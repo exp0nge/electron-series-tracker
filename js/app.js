@@ -20,10 +20,14 @@ angApp.controller('MainCtrl',
 		 */
 		vm.seriesList = window.localStorage.getItem('seriesList');
 		if (vm.seriesList == null)
-			vm.seriesList = []
+			vm.seriesList = [];
+		else
+			vm.seriesList = JSON.parse(vm.seriesList);
 		vm.addSeries = function() {
 			vm.seriesList.push({
-				'title': vm.titleInput
+				'title': vm.titleInput,
+				'timestamp': new Date()
 			});
+			window.localStorage.setItem('seriesList', JSON.stringify(vm.seriesList));
 		}
 	})

@@ -3,6 +3,12 @@ var angApp = angular.module('app', [])
 angApp.controller('MainCtrl', 
 	function(){
 		var vm = this;
+		vm.triggerAddSeriesPanel = function(){
+			if (vm.addSeriesPanel)
+				vm.addSeriesPanel = false;
+			else
+				vm.addSeriesPanel = true;	
+		}
 		/**
 		 * Series Data Structure Definition
 		 * pk: increment
@@ -13,16 +19,11 @@ angApp.controller('MainCtrl',
 		 * link = String
 		 */
 		vm.seriesList = window.localStorage.getItem('seriesList');
-		vm.triggerAddSeriesPanel = function(){
-			vm.addSeriesPanel = true;	
-		}
+		if (vm.seriesList == null)
+			vm.seriesList = []
 		vm.addSeries = function() {
-			vm.seriesList.append(vm.titleInput, {
-				'title': vm.titleInput,
-				'release': vm.releaseDateTimeInput,
-				'shelve': vm.shelveInput,
-				'watched': vm.watchedInput,
-				'link': vm.linkInput
+			vm.seriesList.push({
+				'title': vm.titleInput
 			});
 		}
 	})

@@ -28,8 +28,9 @@
       <!-- Page Layout here -->
       <div class="container">
         <div>
-          <form>
-            <input ng-model="main.titleInput"/>
+          <form ng-submit="main.addSeries()">
+            <input type="text" required name="title" ng-model="main.titleInput"/>
+            <input type="submit" id="submit" value="Submit" />
           </form>
           <p>{{ main.titleInput }}</p>
         </div>  
@@ -39,7 +40,7 @@
               <i class="material-icons circle">folder</i>
               <span class="title">Title</span>
               <p>First Line <br>
-                Second Line
+                {{ series.title }}
               </p>
               <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
             </li>
@@ -48,7 +49,7 @@
         </div>
         <div class="col s3">
             <div class="fixed-action-btn" style="bottom: 15px; right: 14px;">
-              <a class="btn-floating btn-large blue lighten-2" ng-click="main.addSeries()">
+              <a class="btn-floating btn-large blue lighten-2" ng-click="main.triggerAddSeriesPanel()">
                 <i class="large material-icons">add</i>
               </a>
             </div>
